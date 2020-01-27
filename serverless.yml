@@ -31,11 +31,11 @@ provider:
     USER_POOL_REGION: ${env:USER_POOL_REGION}
 
 functions:
-  signin:
-    handler: lambdas/signin.main
+  login:
+    handler: lambdas/login.main
     events:
       - http:
-          path: signin
+          path: login
           method: post
           cors: true
 
