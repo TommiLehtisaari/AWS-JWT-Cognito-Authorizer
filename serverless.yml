@@ -26,11 +26,9 @@ provider:
   # commit your .env.
   #
   environment:
-    USER_POOL_ID:
-      Ref: CognitoUserPool
-    USER_POOL_CLIENT_ID:
-      Ref: CognitoUserPoolClient
-    USER_POOL_REGION: ${self:provider.region}
+    USER_POOL_ID: ${env:USER_POOL_ID}
+    USER_POOL_CLIENT_ID: ${env:USER_POOL_CLIENT_ID}
+    USER_POOL_REGION: ${env:USER_POOL_REGION}
 
 functions:
   signin:
@@ -38,6 +36,14 @@ functions:
     events:
       - http:
           path: signin
+          method: post
+          cors: true
+
+  changepassword:
+    handler: lambdas/changePassword.main
+    events:
+      - http:
+          path: changepassword
           method: post
           cors: true
 
@@ -64,5 +70,3 @@ functions:
 resources:
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}
-  # Cognito
-  - ${file(resources/cognito-user-pool.yml)}

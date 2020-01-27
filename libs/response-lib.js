@@ -10,6 +10,10 @@ export function forbidden(body) {
   return buildResponse(403, body);
 }
 
+export function badrequest(body) {
+  return buildResponse(400, body);
+}
+
 function buildResponse(statusCode, body) {
   return {
     statusCode: statusCode,
