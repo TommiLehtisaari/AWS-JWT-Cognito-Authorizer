@@ -47,6 +47,14 @@ functions:
           method: post
           cors: true
 
+  forgotpassword:
+    handler: lambdas/forgotPassword.main
+    events:
+      - http:
+          path: forgotpassword
+          method: post
+          cors: true
+
   auth:
     handler: lambdas/auth.main
 
